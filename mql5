@@ -1,0 +1,90 @@
+
+//+------------------------------------------------------------------+
+//|                                          True Range Engine MT5   |
+//|                                      Developer's Site: forexroboteasy.com |
+//|                                                       Developer: Forex Robot Easy Team |
+//+------------------------------------------------------------------+
+
+// Include necessary libraries and indicators
+#include <Trade\Trade.mqh>
+#include <Indicators\Indicator.mqh>
+
+// Define inputs and variables
+input double RiskPercentage = 2.0; // Risk percentage for dynamic order grid system
+input double LotSize = 0.01; // Default lot size
+input int MaxPositions = 5; // Maximum number of open positions
+input int TradeStartHour = 22; // Start hour of the night session
+input int TradeEndHour = 6; // End hour of the night session
+
+// Define objects and indicators
+CTrade trade;
+CIndicator indicator;
+
+// Define function to calculate true range
+double TrueRange(double high[], double low[], double close[])
+{
+   double range1 = high[0] - low[0];
+   double range2 = MathAbs(high[0] - close[1]);
+   double range3 = MathAbs(low[0] - close[1]);
+  
+   return MathMax(MathMax(range1, range2), range3);
+}
+
+// Define function to modify indicators through machine learning
+void ModifyIndicators()
+{
+   // Add your custom logic here for modifying indicators using machine learning techniques
+   // Example: indicator.SetParameter('parameter_name', parameter_value);
+}
+
+// Define function to enter forex market and open positions
+void EnterMarket()
+{
+   // Add your logic here to enter the forex market and open positions based on modified indicators
+   // Example: trade.Buy(LotSize);
+}
+
+// Define function to manage risks using dynamic order grid system
+void ManageRisk()
+{
+   // Add your logic here to manage risks when the price moves against open positions
+   // Example: trade.Sell(LotSize);
+}
+
+// Define main function for trading system
+void OnTick()
+{
+   // Check if it is the night session
+   if (Hour() >= TradeStartHour && Hour() < TradeEndHour)
+   {
+      // Modify indicators using machine learning
+      ModifyIndicators();
+      
+      // Enter the forex market and open positions based on modified indicators
+      EnterMarket();
+      
+      // Manage risks using dynamic order grid system
+      ManageRisk();
+   }
+}
+
+// Define function to enhance system performance with active orders
+void ActiveOrder()
+{
+   // Add your logic here to enhance system performance when the number of open positions increases
+   // Example: trade.MarketBuy(LotSize);
+}
+
+// Define function to offer stable and low-risk performance or ultra-high performance based on position volume
+void PerformanceMode()
+{
+   // Add your logic here to offer stable and low-risk performance or ultra-high performance based on position volume
+   // Example: trade.SetSlippage(5);
+}
+
+//+------------------------------------------------------------------+
+//|                                                     Logical Conclusion |
+//+------------------------------------------------------------------+
+
+// The above code provides a basic framework for the True Range Engine MT5 trading system. It includes necessary libraries, indicators, and functions to develop the desired functionalities as per the assignment's terms of reference. Further customization and implementation of specific trading strategies, risk management techniques, and performance enhancements can be done based on specific requirements and preferences.
+
